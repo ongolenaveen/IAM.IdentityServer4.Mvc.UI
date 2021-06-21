@@ -33,6 +33,7 @@ namespace IdentityServer.Mvc.UI.Controllers
         public async Task<IActionResult> Index(LoginRequest request)
         {
             request.ReturnUrl = request.ReturnUrl.Replace("https://localhost:5001", "");
+            request.RememberLogin = true;
             var loginResponse = await _loginService.Login(request);
             
             request.ReturnUrl = "https://localhost:5001" + request.ReturnUrl;
